@@ -4,7 +4,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "macnaer/todoai"
+        IMAGE_NAME = "antonidus/todoai"
     }
 
     stages {
@@ -25,7 +25,7 @@ pipeline {
                 sh """
                     docker stop todoai || true
                     docker rm todoai || true
-                    docker run -d --name todoai --restart=always -p 80:5173 macnaer/todoai
+                    docker run -d --name todoai --restart=always -p 80:5173 antonidus/todoai
                     docker image prune -f
                 """
             }
