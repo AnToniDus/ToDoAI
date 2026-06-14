@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo 'Building TodoAI image ...'
                 sh """
-                    docker build --no-cache -t ${IMAGE_NAME}:${env.BUILD_NUMBER}
+                    sudo docker build --no-cache -t ${IMAGE_NAME}:${env.BUILD_NUMBER}
                 """
             }
         }
