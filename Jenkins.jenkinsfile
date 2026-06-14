@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo 'Building TodoAI image ...'
                 sh """
-                    sudo docker build --no-cache -t ${IMAGE_NAME}:${env.BUILD_NUMBER}
+                    docker build --no-cache -t ${IMAGE_NAME}:${env.BUILD_NUMBER}
                 """
             }
         }
@@ -23,9 +23,9 @@ pipeline {
             steps {
                 echo "Deploying TodoAI on remote server ..."  
                 sh """
-                    sudo docker stop todoai || true
-                    sudo docker rm todoai || true
-                    sudo docker run -d --name todoai --restart=always -p 80:5173 macnaer/todoai
+                    docker stop todoai || true
+                    docker rm todoai || true
+                    docker run -d --name todoai --restart=always -p 80:5173 macnaer/todoai
                     docker image prune -f
                 """
             }
